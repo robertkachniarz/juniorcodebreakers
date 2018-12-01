@@ -12,6 +12,9 @@ public class Bike {
     private long id;
     private Status status;
 
+    public Bike() {
+    }
+
     public Bike(Status status) {
         this.status = status;
     }
