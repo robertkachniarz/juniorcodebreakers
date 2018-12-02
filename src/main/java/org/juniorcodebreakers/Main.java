@@ -1,5 +1,6 @@
 package org.juniorcodebreakers;
 
+import org.juniorcodebreakers.login.Role;
 import org.juniorcodebreakers.model.user.BikeUser;
 import org.juniorcodebreakers.login.BikeUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class Main implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //      userRepository.save(new BikeUser("testowy", "123"));
         //System.out.println(userRepository.findByLogin("testowy"));
-        /*BikeUser bikeUser = new BikeUser("janusz", "123");
-        userRepository.save(bikeUser);*/
-    }
+
+        BikeUser bikeUser = new BikeUser("janusz","123", Role.ADMIN);
+        userRepository.save(bikeUser);
+}
 }

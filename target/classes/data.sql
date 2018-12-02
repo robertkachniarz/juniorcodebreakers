@@ -1,1 +1,1 @@
-INSERT INTO BIKE_USER (login, password) VALUES ('testowy', '123');
+INSERT INTO bike_user (login, password, role) VALUES ('testowy', '123', 'USER');

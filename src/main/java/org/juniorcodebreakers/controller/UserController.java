@@ -1,6 +1,7 @@
 package org.juniorcodebreakers.controller;
 
 import org.juniorcodebreakers.login.BikeUserRepository;
+import org.juniorcodebreakers.login.Role;
 import org.juniorcodebreakers.model.user.BikeUser;
 import org.juniorcodebreakers.model.user.BikeUserForm;
 import org.juniorcodebreakers.service.BikeUserApiClient;
@@ -23,18 +24,24 @@ public class UserController {
         this.client = client;
         this.repository = repository;
     }
-    @GetMapping("/users/adduser")
+    @GetMapping("/users/add")
     public String addUser(){
-        return "users/adduser";
+        return "users/add";
     }
 
-    @PostMapping("/users/adduser")
+    @PostMapping("/users/add")
     public String add(@ModelAttribute BikeUserForm bikeUserForm, RedirectAttributes redirectAttributes){
         BikeUser bikeUser = new BikeUser();
         bikeUser.setLogin(bikeUserForm.getLogin());
         bikeUser.setPassword(bikeUserForm.getPassword());
+        bikeUser.setRole(Role.USER.toString());
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
         return "redirect:/h2";
+    }
+
+    @GetMapping("/about")
+    public String aboutUser(){
+        return "users/about";
     }
 }
