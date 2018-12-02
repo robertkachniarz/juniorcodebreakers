@@ -18,5 +18,6 @@ public class Main {
 
         Bike bike = new Bike(Status.STOLEN);
         Bike bike2 = new Bike(Status.AVAILABLE);
+
     }
 }
