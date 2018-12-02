@@ -17,7 +17,9 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        userRepository.save(new BikeUser("testowy", "123"));
-        System.out.println(userRepository.findByLogin("testowy"));
+//      userRepository.save(new BikeUser("testowy", "123"));
+        //System.out.println(userRepository.findByLogin("testowy"));
+        BikeUser bikeUser = new BikeUser("janusz", "123");
+        userRepository.save(bikeUser);
     }
 }

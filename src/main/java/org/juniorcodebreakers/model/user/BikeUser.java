@@ -3,10 +3,11 @@ package org.juniorcodebreakers.model.user;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "BIKE_USER")
 public class BikeUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
     private String password;
