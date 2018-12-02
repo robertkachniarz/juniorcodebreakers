@@ -4,10 +4,11 @@ import org.juniorcodebreakers.model.Bike;
 import org.juniorcodebreakers.model.Status;
 import org.juniorcodebreakers.service.bike.BikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-@Controller
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class BikeController {
     @Autowired
     public BikeRepository bikeRepository;
