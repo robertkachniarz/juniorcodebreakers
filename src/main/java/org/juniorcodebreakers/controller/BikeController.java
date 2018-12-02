@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -41,7 +40,7 @@ public class BikeController {
     public Bike findById(long id){
         return bikeRepository.findById(id).get();
     }
-    @GetMapping("/bikes")
+    @GetMapping("/bikes/findall")
     @ResponseStatus(HttpStatus.OK)
     public List<Bike> findAllBikes(){
         return StreamSupport.stream(bikeRepository.findAll().spliterator(), false)
