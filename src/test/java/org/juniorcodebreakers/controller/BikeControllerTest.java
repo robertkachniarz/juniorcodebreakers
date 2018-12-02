@@ -1,5 +1,6 @@
 package org.juniorcodebreakers.controller;
 
+import org.juniorcodebreakers.Main;
 import org.juniorcodebreakers.model.Bike;
 import org.juniorcodebreakers.model.Status;
 import org.juniorcodebreakers.service.bike.BikeRepository;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BikeController.class)
+@ContextConfiguration(classes={Main.class})
 public class BikeControllerTest {
 
     @Autowired
