@@ -5,6 +5,7 @@ import org.juniorcodebreakers.model.Bike;
 import org.juniorcodebreakers.model.Status;
 import org.juniorcodebreakers.service.bike.BikeRepository;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -31,21 +32,34 @@ public class BikeControllerTest {
     @MockBean
     private BikeRepository bikeRepository;
 
+    private Bike first = new Bike(1l,Status.STOLEN);
+    private Bike second= new Bike(2l,Status.IN_REPAIR);
+
+
     @Test
     public void shouldFindAllBikes() throws Exception {
         // given
-        Bike first = new Bike(Status.STOLEN);
-        Bike second = new Bike(Status.IN_REPAIR);
-
         given(this.bikeRepository.findAll()).willReturn(Arrays.asList(first, second));
-
         // when
-        mockMvc.perform(get("/bikes"))
+        mockMvc.perform(get("/bikes/findall"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE))
-                .andExpect(content().string(""));
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().string("[{\"id\":1,\"status\":\"STOLEN\"},{\"id\":2,\"status\":\"IN_REPAIR\"}]"));
     }
+
+    @Test
+    public void shouldAddBike() throws Exception {
+        // given
+        given(this.bikeRepository.findAll()).willReturn(Arrays.asList(first, second));
+        // when
+        mockMvc.perform(get("/bikes/findall"))
+                // then
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().string("[{\"id\":1,\"status\":\"STOLEN\"},{\"id\":2,\"status\":\"IN_REPAIR\"}]"));
+    }
+
 
 }
 

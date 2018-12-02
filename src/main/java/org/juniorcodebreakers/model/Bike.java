@@ -15,13 +15,15 @@ public class Bike {
     public Bike() {
     }
 
-    public Bike(long id, Status status) {
-        this.id=id;
-        this.status = status;
-    }
+
 
     public Bike(Status status) {
         this.status = status;
+    }
+
+    public Bike(Long id,Status status) {
+        this.status = status;
+        this.id = id;
     }
 
     public long getId() {

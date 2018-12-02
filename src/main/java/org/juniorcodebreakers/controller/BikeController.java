@@ -35,7 +35,7 @@ public class BikeController {
         bike.setStatus(status);
         bikeRepository.save(bike);
     }
-    @GetMapping("/bikes")
+    @GetMapping("/bikes/findbyid")
     @ResponseStatus(HttpStatus.OK)
     public Bike findById(long id){
         return bikeRepository.findById(id).get();
