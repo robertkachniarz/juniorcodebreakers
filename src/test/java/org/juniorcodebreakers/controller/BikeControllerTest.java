@@ -32,7 +32,7 @@ public class BikeControllerTest {
     public void shouldFindAllBikes() throws Exception {
         // given
         Bike first = new Bike(Status.STOLEN);
-        Bike second = new Bike(Status.INREPAIR);
+        Bike second = new Bike(Status.IN_REPAIR);
 
         given(this.bikeRepository.findAll()).willReturn(Arrays.asList(first, second));
 
