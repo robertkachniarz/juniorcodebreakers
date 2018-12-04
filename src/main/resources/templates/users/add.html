@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Add new user</title>
+    <style>
+        body {
+            width: 110px;
+            height: 110px;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
+<div class="image"></div>
 <section>
     <p>Nowy użytkownik</p>
     <form action="#" th:action="@{/users/add}" method="post">
-        <label for="login">Login: </label> <input type="text" id="login" name="login" />
-        <label for="password">Hasło: </label> <input type="password" id="password" name="password" />
-        <input type="submit" value="Dodaj użytkownika" />
+        <label for="login">Login: </label> <input type="text" id="login" name="login"/>
+        <label for="password">Hasło: </label> <input type="password" id="password" name="password"/>
+        <input type="submit" value="Dodaj użytkownika"/>
     </form>
 </section>
 </body>
