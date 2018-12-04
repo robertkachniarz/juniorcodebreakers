@@ -34,29 +34,34 @@ public class BikeController {
 
     @DeleteMapping("/bikes/delete")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteBike(long bikeId) {
+    public String deleteBike(long bikeId) {
         bikeRepository.deleteById(bikeId);
+        return ("/bikes");
     }
 
     @PutMapping("bikes/update")
     @ResponseStatus(HttpStatus.OK)
-    public void updateBikeStatus(long bikeId, Status status) {
+    public String updateBikeStatus(long bikeId, Status status) {
         Bike bike = bikeRepository.findById(bikeId).get();
         bike.setStatus(status);
         bikeRepository.save(bike);
+        return "/bikes/update";
     }
 
     @GetMapping("/bikes/findbyid")
     @ResponseStatus(HttpStatus.OK)
-    public Bike findById(long id) {
-        return bikeRepository.findById(id).get();
+    public String findById(long id) {
+         bikeRepository.findById(id).get();
+        return "/bikes/findbyid";
     }
 
     @GetMapping("/bikes/findall")
     @ResponseStatus(HttpStatus.OK)
-    public List<Bike> findAllBikes() {
-        return StreamSupport.stream(bikeRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+    public String findAllBikes() {
+        bikeRepository.findAll();
+        /* StreamSupport.stream(bikeRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());*/
+         return "/bikes/findall";
     }
 
 
