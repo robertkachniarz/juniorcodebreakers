@@ -3,6 +3,7 @@ CREATE TABLE bike_user (
 id INTEGER NOT NULL AUTO_INCREMENT,
 login VARCHAR(128) NOT NULL UNIQUE,
 password VARCHAR (128) NOT NULL ,
+e_mail  varchar (128) not null UNIQUE ,
 role VARCHAR (128) NOT NULL ,
 PRIMARY KEY (id)
 );

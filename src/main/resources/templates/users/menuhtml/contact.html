@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .text{
+            font-style: normal;
+            font-size: 36px;
+            margin-top: 200px;
+            color: dimgrey;
+        }
+
+        ul.lista{
+            list-style-type: circle;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="text">W razie pytań należy kontaktować się z:
+    <div class="lista">
+        <li>Wika</li>
+        <li>Robert</li>
+        <li>Michał</li>
+        <li>Patryk</li>
+        <li>Radek</li>
+    </div>
+        Skarki i zażalenia:
+        <li>Pan Olek</li>
+    </div>
+</section>
+</body>
+</html>

@@ -14,15 +14,17 @@ public class BikeUser {
     private Long id;
     private String login;
     private String password;
+    private String e_mail;
     private String role;
 
 
     public BikeUser() {
     }
 
-    public BikeUser(String login, String password, Role role) {
+    public BikeUser(String login, String password, String e_mail, Role role) {
         this.login = login;
         this.password = password;
+        this.e_mail = e_mail;
         this.role = role.toString();
     }
 
@@ -58,12 +60,22 @@ public class BikeUser {
         this.role = role;
     }
 
+    public String getE_mail() {
+        return e_mail;
+    }
+
+    public void setE_mail(String e_mail) {
+        this.e_mail = e_mail;
+    }
+
     @Override
     public String toString() {
         return "BikeUser{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", e_mail='" + e_mail + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

@@ -1,37 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout"
+      lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menu główne</title>
     <style>
-        div.scrollmenu {
-            background-color: #333;
-            overflow: auto;
-            white-space: nowrap;
-        }
-
-        div.scrollmenu a {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 14px;
-            text-decoration: none;
-        }
-
-        div.scrollmenu a:hover {
-            background-color: #777;
-        }
     </style>
 </head>
 <body>
-<div class="scrollmenu">
-    <a href="#account">Moje konto</a>
-    <a href="#history">Historia</a>
-    <a href="#accountbalance">Stan konta</a>
-    <a href="#topupaccount">Doładuj konto</a>
-    <a href="#rental">Wypożycz rower</a>
-    <a href="#contact">Kontakt</a>
-    <a href="#aboutus">O nas</a>
-</div>
+<section layout:fragment="content"></section>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CityBikeRental</title>
+    <style>
+        div.scrollmenu {
+            margin-top: 100px;
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 20px 68px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            background-color: #777;
+        }
+
+    </style>
+</head>
+<body>
+<header style="font-size: 36px; font-style: normal">
+    <h1 th:align="center">City Bike Rental</h1>
+</header>
+<div class="scrollmenu" style="margin-top: 100px">
+    <a href="http://localhost:8080/myaccount">Profil</a>
+    <a href="http://localhost:8080/history">Historia</a>
+    <a href="http://localhost:8080/accountbalance">Stan konta</a>
+    <a href="http://localhost:8080/topupaccount">Doładuj konto</a>
+    <a href="http://localhost:8080/rental">Wypożycz rower</a>
+    <a href="http://localhost:8080/contact">Kontakt</a>
+    <a href="http://localhost:8080/aboutus">O nas</a>
+</div>
+<section layout:fragment="content"></section>
+<footer style="font-size: 12px; margin-top: 800px">
+    <div th:align="center">CityBikeRental by JuniorCodeBreaker&copy; 2018</div>
+</footer>
+</body>
+</html>
