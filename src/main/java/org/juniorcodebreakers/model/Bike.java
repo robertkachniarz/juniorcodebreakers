@@ -9,13 +9,11 @@ public class Bike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private Status status;
 
     public Bike() {
     }
-
-
 
     public Bike(Status status) {
         this.status = status;
@@ -26,7 +24,7 @@ public class Bike {
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
