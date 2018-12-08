@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:http="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>CityBikeRental</title>
+    <style>
+        .scrollmenu {
+            margin-top: 100px;
+            background-color: darkorange;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        .scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 20px 66px;
+            text-decoration: none;
+        }
+
+        .scrollmenu a:hover {
+            background-color: #777;
+        }
+
+        .footer {
+            margin-bottom: 20px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .border {
+            width: 100%;
+            height: 50px;
+            background: #333;
+        }
+
+        .border2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 250px;
+            height: 600px;
+            background: #777777;
+            border-radius: 16px;
+        }
+
+        .border3 {
+            margin-left: 1350px;
+            margin-bottom: 10px;
+            width: 50px;
+            height: 50px;
+            background-image: url("http://www.digett.com/sites/default/files/header-icons/contact-icon.png");
+            background-size: 50px 50px;
+            background-color: white;
+            border-color: white;
+            border-radius: 16px;
+        }
+
+        .text-holder {
+            border-color: #777777;
+            border-style: solid;
+            margin-left: 300px;
+            margin-right: 250px;
+            margin-top: -700px;
+            width: auto;
+            height: auto;
+        }
+
+        .click-border {
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<header style="font-size: 36px; font-style: normal">
+    <h1 th:align="center">City Bike Rental</h1>
+</header>
+<div class="scrollmenu" style="margin-top: 100px">
+    <a href="http://localhost:8080/bikes">Rowery</a>
+    <a href="http://localhost:8080/stations">Stacje</a>
+    <a href="http://localhost:8080/admin">Admin</a>
+   <!-- <a href="http://localhost:8080/accountbalance">Stan konta</a>
+    <a href="http://localhost:8080/topupaccount">Doładuj konto</a>
+    <a href="http://localhost:8080/rental">Wypożycz rower</a>
+    <a href="http://localhost:8080/aboutus">O nas</a>-->
+</div>
+<div class="border"></div>
+<div class="border2"></div>
+<button class="border3">
+    <a href="http://localhost:8080/contact">
+        <div class="click-border"></div>
+    </a>
+</button>
+<section layout:fragment="contentadmin"></section>
+</body>
+<footer class="footer">CityBikeRental by JuniorCodeBreaker&copy; 2018</footer>
+</html>
