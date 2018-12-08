@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout"
+      layout:decorator="layoutadmin"
       lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<section layout:fragment="content">
-    <p>ADD</p>
-    <form action="#" th:action="@{/bike}" method="post">
+<section layout:fragment="contentadmin">
+   <div><p>ADD</p>
+    <form action="#" th:action="@{/templates/bike/bike}" method="post">
         <input type="submit" value="ADD"/>
     </form>
-</section>
+   </div> </section>
 </body>
 </html>
