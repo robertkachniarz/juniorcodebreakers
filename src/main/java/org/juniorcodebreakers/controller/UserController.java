@@ -34,14 +34,41 @@ public class UserController {
         BikeUser bikeUser = new BikeUser();
         bikeUser.setLogin(bikeUserForm.getLogin());
         bikeUser.setPassword(bikeUserForm.getPassword());
+        bikeUser.setE_mail(bikeUserForm.getE_mail());
         bikeUser.setRole(Role.USER.toString());
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
-        return "redirect:/h2";
+        return "redirect:/usermenu";
     }
 
-    @GetMapping("/about")
-    public String aboutUser(){
-        return "users/about";
+    @GetMapping("/usermenu")
+    public String userMenuPage(){
+        return "users/usermenu";
+    }
+
+    @GetMapping("/aboutus")
+    public String aboutUsPage(){return "users/menuhtml/aboutus";}
+
+    @GetMapping("/accountbalance")
+    public String accountBalancePage(){return "users/menuhtml/accountbalance";}
+
+    @GetMapping("/contact")
+    public String contactPage(){return "users/menuhtml/contact";}
+
+    @GetMapping("/history")
+    public String historyPage(){return "users/menuhtml/history";}
+
+    @GetMapping("/myaccount")
+    public String myAccoutnPage(){return "users/menuhtml/myaccount";}
+
+    @GetMapping("/rental")
+    public String rentalPage(){return "users/menuhtml/rental";}
+
+    @GetMapping("/topupaccount")
+    public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
+
+    @GetMapping("/home")
+    public String homePage(){
+        return "users/home";
     }
 }

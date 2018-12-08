@@ -21,7 +21,7 @@ public class Main implements CommandLineRunner {
 //      userRepository.save(new BikeUser("testowy", "123"));
         //System.out.println(userRepository.findByLogin("testowy"));
 
-        BikeUser bikeUser = new BikeUser("janusz","123", Role.ADMIN);
+        BikeUser bikeUser = new BikeUser("janusz","123", "jaki@g-mail.com", Role.ADMIN);
         userRepository.save(bikeUser);
 }
 }
