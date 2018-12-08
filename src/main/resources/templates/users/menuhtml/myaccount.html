@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .text {
+            font-style: normal;
+            font-size: 36px;
+            margin: 10px 10px 10px 10px;
+            color: dimgrey;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="text-holder">
+        <div class="text">Zwykłe wyświetlanie informacji na temat konta. Imię, nazwisko, adres e-mail. Ewentualnie
+            button na zmiane owych danych.
+        </div>
+    </div>
+</section>
+</body>
+</html>

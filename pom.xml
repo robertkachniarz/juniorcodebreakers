@@ -46,11 +46,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-            <version>3.0.4.RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
@@ -60,6 +55,13 @@
             <artifactId>thymeleaf-layout-dialect</artifactId>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
