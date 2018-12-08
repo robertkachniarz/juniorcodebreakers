@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout"
+
       lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,10 +14,15 @@
     </style>
 </head>
 <body>
-<section layout:fragment="content">
+<section>
     <div class="text-holder">
-        <div class="text">Zwykłe wyświetlanie informacji na temat konta. Imię, nazwisko, adres e-mail. Ewentualnie
-            button na zmiane owych danych.
+        <div class="text">
+            <section>
+                <p>ID: <span th:text="${bikeuser.id}">Id</span></p>
+                <p>Tytuł: <span th:text="${bikeuser.login}">Login</span></p>
+                <p>Autor: <span th:text="${bikeuser.e_mail}">Mail</span></p>
+            </section>
+
         </div>
     </div>
 </section>
