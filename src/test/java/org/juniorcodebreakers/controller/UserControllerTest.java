@@ -147,7 +147,7 @@ class UserControllerTest {
     void shouldShowTopUpAccountPage() throws Exception {
         // given
         // when
-        mockMvc.perform(get("/users/login"))
+        mockMvc.perform(get("/topupaccount"))
                 // then
                 .andExpect(status().isOk())
                 .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
