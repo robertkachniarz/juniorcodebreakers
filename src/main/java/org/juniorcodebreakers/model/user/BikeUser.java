@@ -84,22 +84,4 @@ public class BikeUser {
                 ", roles=" + roles +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BikeUser bikeUser = (BikeUser) o;
-        return Objects.equals(id, bikeUser.id) &&
-                Objects.equals(login, bikeUser.login) &&
-                Objects.equals(password, bikeUser.password) &&
-                Objects.equals(e_mail, bikeUser.e_mail) &&
-                Objects.equals(role, bikeUser.role);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, login, password, e_mail, role);
-    }
 }

@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().defaultSuccessUrl("/user")
+                .formLogin().defaultSuccessUrl("/myaccount")
                 .and().httpBasic()
                 .and().exceptionHandling().accessDeniedPage("/403");
         http.csrf().disable();

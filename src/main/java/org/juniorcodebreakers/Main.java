@@ -22,7 +22,10 @@ public class Main implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public static void main(String[] args) {SpringApplication.run(Main.class, args);}
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
     @Override
     public void run(String... args) throws Exception {
         /*Role adminRole = roleRepository.save(new Role("ADMIN"));
@@ -38,6 +41,6 @@ public class Main implements CommandLineRunner {
         userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         //System.out.println(userRepository.findAll().toString());
 */
-}
     }
 }
+
