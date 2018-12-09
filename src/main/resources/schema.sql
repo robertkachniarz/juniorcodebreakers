@@ -1,4 +1,4 @@
-DROP TABLE bike_user IF EXISTS;
+DROP TABLE IF EXISTS bike_user;
 CREATE TABLE bike_user (
 id INTEGER NOT NULL AUTO_INCREMENT,
 login VARCHAR(128) NOT NULL UNIQUE,
@@ -7,5 +7,9 @@ e_mail  varchar (128) not null UNIQUE ,
 role VARCHAR (128) NOT NULL ,
 PRIMARY KEY (id)
 );
-drop table bikes if exists
-create  table bikes(id INTEGER NOT NULL AUTO_INCREMENT, status varchar(255),primary key (id))
+
+DROP TABLE IF EXISTS bikes;
+create  table bikes(
+id INTEGER NOT NULL AUTO_INCREMENT,
+status varchar(255),
+primary key (id));

@@ -36,12 +36,12 @@ public class UserController {
         bikeUser.setRole(Role.USER.toString());
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
-        return "redirect:/usermenu";
+        return "redirect:/homepage";
     }
 
-    @GetMapping("/usermenu")
+    @GetMapping("/homepage")
     public String userMenuPage(){
-        return "users/usermenu";
+        return "users/homepage";
     }
 
     @GetMapping("/aboutus")
@@ -57,7 +57,7 @@ public class UserController {
     public String historyPage(){return "users/menuhtml/history";}
 
     @GetMapping("/users/{login}")
-    public String myAccoutnPage(@PathVariable String login, Model model){
+    public String myAccountPage(@PathVariable String login, Model model){
         model.addAttribute("bikeuser", repository.findByLogin(login).get());
         return "users/menuhtml/myaccount";}
 
@@ -67,8 +67,8 @@ public class UserController {
     @GetMapping("/topupaccount")
     public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
 
-    @GetMapping("/home")
+    @GetMapping("/entrypage")
     public String homePage(){
-        return "users/home";
+        return "entrypage";
     }
 }
