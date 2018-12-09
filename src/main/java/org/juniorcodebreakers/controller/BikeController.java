@@ -21,14 +21,13 @@ public class BikeController {
 
     @GetMapping("/bikes/add")
     public String addPage() {
-        return "bikes/add";
+        return "bikes/addbike";
     }
 
     @PostMapping("/bikes/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public String saveBike(RedirectAttributes redirectAttributes) {
+    public String saveBike() {
         bikeRepository.save(new Bike(Status.READY_TO_DISTRIBUTION));
-    redirectAttributes.addFlashAttribute("result", "Rower został dodany");
         return "bikes/bikes";
     }
 
@@ -46,7 +45,7 @@ public class BikeController {
         return "redirect:/bikes/bikes";
     }
 
-    @PostMapping("bikes/update/{bikeId}/{status}")
+    @PostMapping("/bikes/update/{bikeId}/{status}")
     @ResponseStatus(HttpStatus.OK)
     public String updateBikeStatus(
             @PathVariable Long bikeId,
@@ -63,7 +62,7 @@ public class BikeController {
     @ResponseStatus(HttpStatus.OK)
     public String findById(Model model, @PathVariable Long id){
         model.addAttribute("bike",bikeRepository.findById(id).get());
-        return"bikes/details";
+        return"bikes/bikes";
     }
 
     @GetMapping("/bikes/findall")

@@ -5,10 +5,27 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <style>
-    </style>
+
 </head>
-<body>
-<section layout:fragment="content"></section>
+<body>sdadas
+<section layout:fragment="contentadmin">
+    <table>
+        <thead>
+        <tr>
+            <th> ID </th>
+            <th> Status </th>
+        </tr>
+        </thead>
+        <tbody>
+       <!-- <tr th:if="${bikesList.empty}">
+            <td colspan="2"> Nie ma zadnych rowerów </td>
+        </tr>-->
+        <tr th:each="bike : ${bikesList}">
+            <td><span th:text="${bike.getId()}"> Id </span></td>
+            <td><span th:text="${bike.getStatus()}"> Status </span></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>
