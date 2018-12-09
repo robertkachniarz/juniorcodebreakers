@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.common.collect.Sets;
 
+import java.security.Principal;
+import java.util.Optional;
+
 @Controller
 @RequestMapping
 public class UserController {
@@ -69,9 +72,12 @@ public class UserController {
     @GetMapping("/history")
     public String historyPage(){return "users/menuhtml/history";}
 
-    @GetMapping("/users/{login}")
-    public String myAccoutnPage(@PathVariable String login, Model model){
-        model.addAttribute("bikeuser", repository.findByLogin(login).get());
+    @GetMapping("/myaccount")
+    public String myAccoutnPage(Principal principal, Model model){
+        Optional<BikeUser> bikeUser = repository.findByLogin(principal.getName());
+        model.addAttribute("bikeuser", bikeUser.get());
+
+        //model.addAttribute("bikeuser", repository.findByLogin(principal.getName()).get());
         return "users/menuhtml/myaccount";}
 
     @GetMapping("/rental")
