@@ -76,8 +76,6 @@ public class UserController {
     public String myAccoutnPage(Principal principal, Model model){
         Optional<BikeUser> bikeUser = repository.findByLogin(principal.getName());
         model.addAttribute("bikeuser", bikeUser.get());
-
-        //model.addAttribute("bikeuser", repository.findByLogin(principal.getName()).get());
         return "users/menuhtml/myaccount";}
 
     @GetMapping("/rental")
