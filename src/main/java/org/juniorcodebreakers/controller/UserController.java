@@ -23,12 +23,12 @@ public class UserController {
         this.repository = repository;
     }
     @GetMapping("/users/add")
-    public String addUser(){
+    public String addUser() {
         return "users/add";
     }
 
     @PostMapping("/users/add")
-    public String add(@ModelAttribute BikeUserForm bikeUserForm, RedirectAttributes redirectAttributes){
+    public String add(@ModelAttribute BikeUserForm bikeUserForm, RedirectAttributes redirectAttributes) {
         BikeUser bikeUser = new BikeUser();
         bikeUser.setLogin(bikeUserForm.getLogin());
         bikeUser.setPassword(bikeUserForm.getPassword());
@@ -40,35 +40,48 @@ public class UserController {
     }
 
     @GetMapping("/homepage")
-    public String userMenuPage(){
+    public String userMenuPage() {
         return "users/homepage";
     }
 
     @GetMapping("/aboutus")
-    public String aboutUsPage(){return "users/menuhtml/aboutus";}
+    public String aboutUsPage() {
+        return "users/menuhtml/aboutus";
+    }
 
     @GetMapping("/accountbalance")
-    public String accountBalancePage(){return "users/menuhtml/accountbalance";}
+    public String accountBalancePage() {
+        return "users/menuhtml/accountbalance";
+    }
 
     @GetMapping("/contact")
-    public String contactPage(){return "users/menuhtml/contact";}
+    public String contactPage() {
+        return "users/menuhtml/contact";
+    }
 
     @GetMapping("/history")
-    public String historyPage(){return "users/menuhtml/history";}
+    public String historyPage() {
+        return "users/menuhtml/history";
+    }
 
     @GetMapping("/users/{login}")
-    public String myAccountPage(@PathVariable String login, Model model){
+    public String myAccountPage(@PathVariable String login, Model model) {
         model.addAttribute("bikeuser", repository.findByLogin(login).get());
-        return "users/menuhtml/myaccount";}
+        return "users/menuhtml/myaccount";
+    }
 
     @GetMapping("/rental")
-    public String rentalPage(){return "users/menuhtml/rental";}
+    public String rentalPage() {
+        return "users/menuhtml/rental";
+    }
 
     @GetMapping("/topupaccount")
-    public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
+    public String topUpAccountPage() {
+        return "users/menuhtml/topupaccount";
+    }
 
     @GetMapping("/entrypage")
-    public String homePage(){
-        return "entrypage";
+    public String homePage() {
+        return "users/entrypage";
     }
 }
