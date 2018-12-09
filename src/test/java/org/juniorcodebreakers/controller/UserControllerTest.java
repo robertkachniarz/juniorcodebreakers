@@ -17,6 +17,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -36,7 +38,7 @@ class UserControllerTest {
     private BikeUserRepository bikeUserRepository;
 
     @Test
-    void shouldAddUser() throws Exception {
+    void shouldShowAddUser() throws Exception {
         // given
         // when
         mockMvc.perform(get("/users/add"))
@@ -60,7 +62,7 @@ class UserControllerTest {
     }
 
     @Test
-    void userMenuPage() throws Exception {
+    void shouldShowUserMenuPage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/usermenu"))
@@ -71,7 +73,7 @@ class UserControllerTest {
     }
 
     @Test
-    void aboutUsPage() throws Exception {
+    void shouldShowAboutUsPage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/aboutus"))
@@ -82,7 +84,7 @@ class UserControllerTest {
     }
 
     @Test
-    void accountBalancePage() throws Exception {
+    void shouldShowAccountBalancePage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/accountbalance"))
@@ -93,7 +95,7 @@ class UserControllerTest {
     }
 
     @Test
-    void contactPage() throws Exception {
+    void shouldShowContactPage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/contact"))
@@ -104,7 +106,7 @@ class UserControllerTest {
     }
 
     @Test
-    void historyPage() throws Exception {
+    void shouldShowHistoryPage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/history"))
@@ -115,18 +117,23 @@ class UserControllerTest {
     }
 
     @Test
-    void myAccoutnPage() throws Exception {
+    void shouldShowMyAccoutnPage() throws Exception {
         // given
+        BikeUser bikeUser = new BikeUser();
+        bikeUser.setLogin("login");
+        bikeUser.setRole(Role.USER.toString());
+        given(bikeUserRepository.findByLogin("login")).willReturn(Optional.of(bikeUser));
         // when
-        mockMvc.perform(get("/myaccount"))
+        mockMvc.perform(get("/users/login"))
                 // then
                 .andExpect(status().isOk())
+                .andExpect(model().attribute("bikeuser",bikeUser))
                 .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
                 .andExpect(view().name("users/menuhtml/myaccount"));
     }
 
     @Test
-    void rentalPage() throws Exception {
+    void shouldShowRentalPage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/rental"))
@@ -137,10 +144,10 @@ class UserControllerTest {
     }
 
     @Test
-    void topUpAccountPage() throws Exception {
+    void shouldShowTopUpAccountPage() throws Exception {
         // given
         // when
-        mockMvc.perform(get("/topupaccount"))
+        mockMvc.perform(get("/users/login"))
                 // then
                 .andExpect(status().isOk())
                 .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
@@ -148,7 +155,7 @@ class UserControllerTest {
     }
 
     @Test
-    void homePage() throws Exception {
+    void shouldShowHomePage() throws Exception {
         // given
         // when
         mockMvc.perform(get("/home"))
@@ -157,4 +164,5 @@ class UserControllerTest {
                 .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
                 .andExpect(view().name("users/home"));
     }
+
 }
