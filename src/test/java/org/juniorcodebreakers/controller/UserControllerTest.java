@@ -21,9 +21,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserController.class)
@@ -44,8 +42,8 @@ class UserControllerTest {
         mockMvc.perform(get("/users/add"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/add"));
     }
 
     @Test
@@ -57,7 +55,7 @@ class UserControllerTest {
         // when
         mockMvc.perform(post("/users/add"))
         //then
-               .andExpect(status().isFound());
+               .andExpect(status().isCreated());
         then(bikeUserRepository).should().save(bikeUser);
     }
 
@@ -68,8 +66,8 @@ class UserControllerTest {
         mockMvc.perform(get("/usermenu"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/usermenu"));
     }
 
     @Test
@@ -79,8 +77,8 @@ class UserControllerTest {
         mockMvc.perform(get("/aboutus"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/aboutus"));
     }
 
     @Test
@@ -90,8 +88,8 @@ class UserControllerTest {
         mockMvc.perform(get("/accountbalance"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/accountbalance"));
     }
 
     @Test
@@ -101,8 +99,8 @@ class UserControllerTest {
         mockMvc.perform(get("/contact"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/contact"));
     }
 
     @Test
@@ -112,8 +110,8 @@ class UserControllerTest {
         mockMvc.perform(get("/history"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/history"));
     }
 
     @Test
@@ -123,8 +121,8 @@ class UserControllerTest {
         mockMvc.perform(get("/myaccount"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/myaccount"));
     }
 
     @Test
@@ -134,8 +132,8 @@ class UserControllerTest {
         mockMvc.perform(get("/rental"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/rental"));
     }
 
     @Test
@@ -145,8 +143,8 @@ class UserControllerTest {
         mockMvc.perform(get("/topupaccount"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/menuhtml/topupaccount"));
     }
 
     @Test
@@ -156,7 +154,7 @@ class UserControllerTest {
         mockMvc.perform(get("/home"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"));
-        // .andExpect(content().);
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8"))
+                .andExpect(view().name("users/home"));
     }
 }
