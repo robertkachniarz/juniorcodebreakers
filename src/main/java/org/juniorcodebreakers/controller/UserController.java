@@ -52,12 +52,12 @@ public class UserController {
         bikeUser.setRoles(Sets.newHashSet(userRole));
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
-        return "redirect:/usermenu";
+        return "redirect:/homepage";
     }
 
-    @GetMapping("/usermenu")
-    public String userMenuPage(){
-        return "users/usermenu";
+    @GetMapping("/homepage")
+    public String userMenuPage() {
+        return "users/homepage";
     }
 
     @GetMapping("/aboutus")
@@ -79,6 +79,11 @@ public class UserController {
 
         //model.addAttribute("bikeuser", repository.findByLogin(principal.getName()).get());
         return "users/menuhtml/myaccount";}
+    @GetMapping("/users/{login}")
+    public String myAccountPage(@PathVariable String login, Model model) {
+        model.addAttribute("bikeuser", repository.findByLogin(login).get());
+        return "users/menuhtml/myaccount";
+    }
 
     @GetMapping("/rental")
     public String rentalPage(){return "users/menuhtml/rental";}
@@ -86,8 +91,8 @@ public class UserController {
     @GetMapping("/topupaccount")
     public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
 
-    @GetMapping("/home")
-    public String homePage(){
-        return "users/home";
+    @GetMapping("/entrypage")
+    public String homePage() {
+        return "users/entrypage";
     }
 }
