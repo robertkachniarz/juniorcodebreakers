@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layoutadmin"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section layout:fragment="contentadmin">
+    <p>Nowy rower</p>
+    <div class="text-holder"></div>
+    <div class="border2">
+        <button>
+            <form action="#" th:action="@{/bikes/add}" method="post">
+                <input type="submit" value="Dodaj">
+            </form>
+
+        </button>
+    </div>
+</section>
+</body>
+</html>

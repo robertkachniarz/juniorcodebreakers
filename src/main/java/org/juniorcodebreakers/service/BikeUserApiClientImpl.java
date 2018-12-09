@@ -18,4 +18,5 @@ public class BikeUserApiClientImpl implements BikeUserApiClient {
     public BikeUser fetchBikeUserInfo(String bikeUserId) {
         return null;
     }
+
 }

@@ -42,8 +42,8 @@ public class BikeControllerTest {
         mockMvc.perform(get("/bikes/findall"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE+";charset=UTF-8"))
-                .andExpect(content().string("redirect:/bikes"));
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML+";charset=UTF-8"))
+                .andExpect(view().name("bikes/bikes"));
     }
 
     @Test
@@ -68,8 +68,8 @@ public class BikeControllerTest {
         mockMvc.perform(get("/bikes/findbyid/1"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE+";charset=UTF-8"))
-                .andExpect(content().string("bikes/details"));
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML+";charset=UTF-8"))
+                .andExpect(view().name("bikes/details"));
     }
     @Test
     public void shouldDeleteBikeById() throws Exception {

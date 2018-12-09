@@ -6,24 +6,36 @@ import org.juniorcodebreakers.service.bike.BikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@RestController
+@Controller
 @RequestMapping
 public class BikeController {
     @Autowired
     public BikeRepository bikeRepository;
+
+    @GetMapping("/bikes/add")
+    public String addPage() {
+        return "bikes/add";
+    }
 
     @PostMapping("/bikes/add")
     @ResponseStatus(HttpStatus.CREATED)
     public String saveBike(RedirectAttributes redirectAttributes) {
         bikeRepository.save(new Bike(Status.READY_TO_DISTRIBUTION));
     redirectAttributes.addFlashAttribute("result", "Rower został dodany");
-        return "redirect:/bikes";
+        return "bikes/bikes";
+    }
+
+    @GetMapping("/bikes")
+    @ResponseStatus(HttpStatus.OK)
+    public String bikesPage(){
+        return "bikes/bikes";
     }
 
     @DeleteMapping("/bikes/delete/{bikeId}")
@@ -31,7 +43,7 @@ public class BikeController {
     public String deleteBike(@PathVariable Long bikeId,RedirectAttributes redirectAttributes) {
         bikeRepository.deleteById(bikeId);
         redirectAttributes.addFlashAttribute("result", ("Rower o numerze: " +bikeId+" został usunięty pomyślnie"));
-        return "redirect:/bikes";
+        return "redirect:/bikes/bikes";
     }
 
     @PostMapping("bikes/update/{bikeId}/{status}")
@@ -44,7 +56,7 @@ public class BikeController {
         bike.setStatus(Status.valueOf(status));
         bikeRepository.save(bike);
         redirectAttributes.addFlashAttribute("result", ("Zmieniono status roweru o numerze: " +bikeId+" na status: "+status+"."));
-        return "redirect:/bikes";
+        return "redirect:/bikes/bikes";
     }
 
     @GetMapping(value = "/bikes/findbyid/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
@@ -56,11 +68,18 @@ public class BikeController {
 
     @GetMapping("/bikes/findall")
     @ResponseStatus(HttpStatus.OK)
-    public String findAllBikes(Model model,RedirectAttributes redirectAttributes){
+    public String findAllBikes(Model model){
         model.addAttribute("bikesList",StreamSupport.stream(bikeRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList()));
-        return "redirect:/bikes";
+        return "bikes/bikes";
     }
+
+
+    @GetMapping("/test")
+    public String test(){return "bikes/test";}
+
+
+
 
 
 

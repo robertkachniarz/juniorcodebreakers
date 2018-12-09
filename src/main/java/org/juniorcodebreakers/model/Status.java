@@ -6,5 +6,5 @@ public enum Status { //Enum okresla status w jakim znajduje sie rower
     AVAILABLE,//rower dostepny
     IN_REPAIR,//rower w naprawie
     STOLEN,//Radek ukradl rower
-    READY_TO_DISTRIBUTION //swiezo kupiony gotowy do dystrybucji
+    READY_TO_DISTRIBUTION ;//swiezo kupiony gotowy do dystrybucji
 }
