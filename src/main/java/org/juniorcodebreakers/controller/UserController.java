@@ -52,7 +52,18 @@ public class UserController {
         bikeUser.setRoles(Sets.newHashSet(userRole));
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
-        return "redirect:/usermenu";
+        return "redirect:/login";
+    }
+
+    @GetMapping("/users/delete")
+    public String deleteUser(){
+        return "users/delete";
+    }
+    @PostMapping("/users/delete")
+    public String delete(Principal principal){
+        Optional<BikeUser> bikeUser = repository.findByLogin(principal.getName());
+        repository.delete(bikeUser.get());
+        return "redirect:/";
     }
 
     @GetMapping("/usermenu")
