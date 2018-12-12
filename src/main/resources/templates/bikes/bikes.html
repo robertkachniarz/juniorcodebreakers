@@ -3,12 +3,38 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layoutadmin"
       lang="en">
-<head>
-    <meta charset="UTF-8">
 
-</head>
-<body>sdadas
+<body>
 <section layout:fragment="contentadmin">
+    <div >
+            <form action="#" th:action="@{/bikes/add}" method="post">
+                <input type="submit" value="Dodaj">
+            </form>
+
+    </div>
+    <br>
+    <div >
+            <form action="#" th:action="@{'/bikes/delete/'+${id}}" method="post">
+                <input type="text" name="id"  placeholder="Podaj id roweru">
+                <input type="submit" value="Usuń">
+            </form>
+
+    </div>
+    <br>
+    <div >
+        <form action="#" th:action="@{'/bikes/update/'+${id}+'/'+${status}}" method="post">
+            <input type="radio" name="status" value="RENTED" checked> Wypozyczony<br>
+            <input type="radio" name="status" value="AVAILABLE"> Dostępny<br>
+            <input type="radio" name="status" value="IN_REPAIR"> W naprawie<br>
+            <input type="radio" name="status" value="STOLEN"> Skradziony<br>
+            <input type="radio" name="status" value="READY_TO_DISTRIBUTION"> Gotowy do dystrybucji<br>
+            <input type="text" name="id" placeholder="Podaj id roweru">
+            <input type="submit" value="Edytuj">
+        </form>
+
+    </div>
+    <div class="text-holder">
+
     <table>
         <thead>
         <tr>
@@ -17,15 +43,15 @@
         </tr>
         </thead>
         <tbody>
-       <!-- <tr th:if="${bikesList.empty}">
-            <td colspan="2"> Nie ma zadnych rowerów </td>
-        </tr>-->
-        <tr th:each="bike : ${bikesList}">
+
+       <tr th:each="bike : ${bikesList}">
             <td><span th:text="${bike.getId()}"> Id </span></td>
             <td><span th:text="${bike.getStatus()}"> Status </span></td>
         </tr>
         </tbody>
     </table>
+    </div>
+
 </section>
 </body>
 </html>

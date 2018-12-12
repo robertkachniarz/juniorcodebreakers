@@ -31,31 +31,39 @@ public class BikeController {
         return "bikes/bikes";
     }
 
-    @GetMapping("/bikes")
+    @GetMapping("/bikes/delete/{bikeId}")
     @ResponseStatus(HttpStatus.OK)
-    public String bikesPage(){
+    public String deletePage(Model model, @PathVariable Long bikeId){
+        model.addAttribute("bikeId", bikeRepository.findById(bikeId));
         return "bikes/bikes";
     }
 
-    @DeleteMapping("/bikes/delete/{bikeId}")
+    @PostMapping("/bikes/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteBike(@PathVariable Long bikeId,RedirectAttributes redirectAttributes) {
-        bikeRepository.deleteById(bikeId);
-        redirectAttributes.addFlashAttribute("result", ("Rower o numerze: " +bikeId+" został usunięty pomyślnie"));
-        return "redirect:/bikes/bikes";
+    public String deleteBike(Model model, @RequestParam("id") Long id) {
+       model.addAttribute("id",id);
+       bikeRepository.deleteById(id);
+        return "bikes/bikes";
     }
+  /*  @GetMapping("/books/{bookId}")
+    public String details(Model model, @PathVariable String bookId) {
+        model.addAttribute("book", client.fetchBookInfo(bookId));
+        return "books/details";
 
-    @PostMapping("/bikes/update/{bikeId}/{status}")
+    }*/
+
+    @PostMapping("/bikes/update/{id}/{status}")
     @ResponseStatus(HttpStatus.OK)
     public String updateBikeStatus(
-            @PathVariable Long bikeId,
-            @PathVariable String status,
-           RedirectAttributes redirectAttributes){
-        Bike bike =bikeRepository.findById(bikeId).get();
+            Model model,
+            @RequestParam("id") Long id,
+            @RequestParam("status") String status){
+        model.addAttribute("id",id);
+        model.addAttribute("status",status);
+        Bike bike =bikeRepository.findById(id).get();
         bike.setStatus(Status.valueOf(status));
         bikeRepository.save(bike);
-        redirectAttributes.addFlashAttribute("result", ("Zmieniono status roweru o numerze: " +bikeId+" na status: "+status+"."));
-        return "redirect:/bikes/bikes";
+        return "bikes/bikes";
     }
 
     @GetMapping(value = "/bikes/findbyid/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
@@ -65,7 +73,7 @@ public class BikeController {
         return"bikes/bikes";
     }
 
-    @GetMapping("/bikes/findall")
+    @GetMapping("/bikes")
     @ResponseStatus(HttpStatus.OK)
     public String findAllBikes(Model model){
         model.addAttribute("bikesList",StreamSupport.stream(bikeRepository.findAll().spliterator(), false)
@@ -74,8 +82,11 @@ public class BikeController {
     }
 
 
-    @GetMapping("/test")
-    public String test(){return "bikes/test";}
+    @GetMapping("/admin")
+    public String adminPage(){return "bikes/admin";}
+
+    @GetMapping("/stations")
+    public String stationsPage(){return "bikes/stations";}
 
 
 
