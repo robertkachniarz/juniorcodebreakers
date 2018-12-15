@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -25,10 +24,10 @@ public class BikeController {
     }
 
     @PostMapping("/bikes/add")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.FOUND)
     public String saveBike() {
         bikeRepository.save(new Bike(Status.READY_TO_DISTRIBUTION));
-        return "bikes/bikes";
+        return "redirect:/bikes";
     }
 
     @GetMapping("/bikes/delete/{bikeId}")
@@ -39,11 +38,11 @@ public class BikeController {
     }
 
     @PostMapping("/bikes/delete/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.FOUND)
     public String deleteBike(Model model, @RequestParam("id") Long id) {
        model.addAttribute("id",id);
        bikeRepository.deleteById(id);
-        return "bikes/bikes";
+        return "redirect:/bikes";
     }
   /*  @GetMapping("/books/{bookId}")
     public String details(Model model, @PathVariable String bookId) {
@@ -53,7 +52,7 @@ public class BikeController {
     }*/
 
     @PostMapping("/bikes/update/{id}/{status}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.FOUND)
     public String updateBikeStatus(
             Model model,
             @RequestParam("id") Long id,
@@ -63,7 +62,7 @@ public class BikeController {
         Bike bike =bikeRepository.findById(id).get();
         bike.setStatus(Status.valueOf(status));
         bikeRepository.save(bike);
-        return "bikes/bikes";
+        return "redirect:/bikes";
     }
 
     @GetMapping(value = "/bikes/findbyid/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
