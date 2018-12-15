@@ -3,6 +3,7 @@ package org.juniorcodebreakers.model.user;
 import org.juniorcodebreakers.login.Role;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -15,17 +16,21 @@ public class BikeUser {
     private String login;
     private String password;
     private String e_mail;
-    private String role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "bikeusers_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 
     public BikeUser() {
     }
 
-    public BikeUser(String login, String password, String e_mail, Role role) {
+    public BikeUser(String login, String password, String e_mail, Set<Role> roles) {
         this.login = login;
         this.password = password;
         this.e_mail = e_mail;
-        this.role = role.toString();
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -52,12 +57,12 @@ public class BikeUser {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getE_mail() {
@@ -68,6 +73,7 @@ public class BikeUser {
         this.e_mail = e_mail;
     }
 
+
     @Override
     public String toString() {
         return "BikeUser{" +
@@ -75,7 +81,7 @@ public class BikeUser {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", e_mail='" + e_mail + '\'' +
-                ", role='" + role + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }

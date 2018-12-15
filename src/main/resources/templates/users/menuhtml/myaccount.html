@@ -12,20 +12,26 @@
             margin: 10px 10px 10px 10px;
             color: dimgrey;
         }
+        .button {
+            width: 100px;
+            height: 30px;
+            color: aqua;
+        }
+
     </style>
 </head>
 <body>
 <section layout:fragment="content">
     <div class="text-holder">
         <div class="text">
-
                 <p>ID: <span th:text="${bikeuser.id}">Id</span></p>
                 <p>Tytuł: <span th:text="${bikeuser.login}">Login</span></p>
                 <p>Autor: <span th:text="${bikeuser.e_mail}">Mail</span></p>
-
-
         </div>
     </div>
+<form th:action="@{/users/delete}" th:method="post">
+            <button name="delete" type="submit">Usuń konto</button>
+</form>
 </section>
 </body>
 </html>
