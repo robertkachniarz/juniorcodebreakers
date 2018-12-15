@@ -18,14 +18,16 @@
 <section layout:fragment="content">
     <div class="text-holder">
         <div class="text">
-
-                <p>ID: <span th:text="${bikeuser.id}">Id</span></p>
-                <p>Tytuł: <span th:text="${bikeuser.login}">Login</span></p>
-                <p>Autor: <span th:text="${bikeuser.e_mail}">Mail</span></p>
-
-
+            <p>ID: <span th:text="${bikeuser.id}">Id</span></p>
+            <p>Tytuł: <span th:text="${bikeuser.login}">Login</span></p>
+            <p>E-mail: <span th:text="${bikeuser.e_mail}">Mail</span></p>
         </div>
     </div>
+<!--    <div class="border2">
+        <button><a href="http://localhost:8080/history" style="text-decoration: none">Historia</a></button><br/>
+        <button><a href="http://localhost:8080/accountbalance" style="text-decoration: none">Stan konta</a></button><br/>
+        <button><a href="http://localhost:8080/topupaccount" style="text-decoration: none">Doładuj konto</a></button><br/>
+    </div>-->
 </section>
 </body>
 </html>
