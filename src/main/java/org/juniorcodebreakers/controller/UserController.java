@@ -7,7 +7,6 @@ import org.juniorcodebreakers.model.user.BikeUser;
 import org.juniorcodebreakers.model.user.BikeUserForm;
 import org.juniorcodebreakers.service.BikeUserApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +22,6 @@ import java.util.Optional;
 public class UserController {
     private final BikeUserApiClient client;
     private final BikeUserRepository repository;
-    private BikeUser bikeUser;
-    private Role role;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -55,12 +52,23 @@ public class UserController {
         bikeUser.setRoles(Sets.newHashSet(userRole));
         repository.save(bikeUser);
         redirectAttributes.addFlashAttribute("result", "Użytkownik został dodany");
-        return "redirect:/homepage";
+        return "redirect:/login";
     }
 
-    @GetMapping("/homepage")
-    public String userMenuPage() {
-        return "users/homepage";
+    @GetMapping("/users/delete")
+    public String deleteUser(){
+        return "users/delete";
+    }
+    @PostMapping("/users/delete")
+    public String delete(Principal principal){
+        Optional<BikeUser> bikeUser = repository.findByLogin(principal.getName());
+        repository.delete(bikeUser.get());
+        return "redirect:/";
+    }
+
+    @GetMapping("/usermenu")
+    public String userMenuPage(){
+        return "users/usermenu";
     }
 
     @GetMapping("/aboutus")
@@ -79,14 +87,7 @@ public class UserController {
     public String myAccoutnPage(Principal principal, Model model){
         Optional<BikeUser> bikeUser = repository.findByLogin(principal.getName());
         model.addAttribute("bikeuser", bikeUser.get());
-
-        //model.addAttribute("bikeuser", repository.findByLogin(principal.getName()).get());
         return "users/menuhtml/myaccount";}
-    @GetMapping("/users/{login}")
-    public String myAccountPage(@PathVariable String login, Model model) {
-        model.addAttribute("bikeuser", repository.findByLogin(login).get());
-        return "users/menuhtml/myaccount";
-    }
 
     @GetMapping("/rental")
     public String rentalPage(){return "users/menuhtml/rental";}
@@ -94,8 +95,8 @@ public class UserController {
     @GetMapping("/topupaccount")
     public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
 
-    @GetMapping("/entrypage")
-    public String homePage() {
-        return "users/entrypage";
+    @GetMapping("/home")
+    public String homePage(){
+        return "users/home";
     }
 }
