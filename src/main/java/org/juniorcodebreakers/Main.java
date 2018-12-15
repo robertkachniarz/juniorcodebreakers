@@ -28,7 +28,7 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        /*Role adminRole = roleRepository.save(new Role("ADMIN"));
+       Role adminRole = roleRepository.save(new Role("ADMIN"));
         Role userRole = roleRepository.save(new Role("USER"));
 
         // guava
@@ -40,8 +40,8 @@ public class Main implements CommandLineRunner {
 
         userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         //System.out.println(userRepository.findAll().toString());
-*/
-        userRepository.save(new BikeUser("q", passwordEncoder.encode("q"), "administrator@wp.org", Sets.newHashSet()));
+
+       // userRepository.save(new BikeUser("q", passwordEncoder.encode("q"), "administrator@wp.org", Sets.newHashSet()));
     }
 }
 
