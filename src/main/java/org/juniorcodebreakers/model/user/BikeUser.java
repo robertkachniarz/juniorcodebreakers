@@ -3,6 +3,7 @@ package org.juniorcodebreakers.model.user;
 import org.juniorcodebreakers.login.Role;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity

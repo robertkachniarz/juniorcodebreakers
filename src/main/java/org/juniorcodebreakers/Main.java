@@ -22,10 +22,13 @@ public class Main implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public static void main(String[] args) {SpringApplication.run(Main.class, args);}
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
     @Override
     public void run(String... args) throws Exception {
-        Role adminRole = roleRepository.save(new Role("ADMIN"));
+        /*Role adminRole = roleRepository.save(new Role("ADMIN"));
         Role userRole = roleRepository.save(new Role("USER"));
 
         // guava
@@ -37,6 +40,8 @@ public class Main implements CommandLineRunner {
 
         userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         //System.out.println(userRepository.findAll().toString());
+*/
+        userRepository.save(new BikeUser("q", passwordEncoder.encode("q"), "administrator@wp.org", Sets.newHashSet()));
+    }
+}
 
-}
-}

@@ -11,23 +11,22 @@
     <meta charset="UTF-8">
     <title>CityBikeRental</title>
     <style>
-        .scrollmenu {
-            margin-top: 100px;
+        * {margin: 0; padding: 0;}
+        #menu li {list-style: none;}
+        #menu {margin-top: 100px; text-align: left; margin-left: 15%}
+        #menu ul {visibility: hidden; top: 100%; left: 0; height: 50px;}
+        #menu li {float: left;}
+        #menu li li {float: none; width: auto;/* border-style: solid; border-color: #555555*/}
+        #menu li:hover ul {visibility: visible;}
+        #menu a, #menu li:hover li a {display: block; font: 12px/30px verdana, sans-serif; padding: 20px 66px; color: white; height: 65px; text-align: center; position: static;}
+        #menu li li a {width: auto;}
+        #menu li:hover a, #menu li:hover li:hover a {background-color: #777; transition: all 0.5s;}
+        #menu li:visited a, #menu li:visited li:visited a{}
+
+        .menu-contener{
+            height: 65px;
             background-color: darkorange;
-            overflow: auto;
-            white-space: nowrap;
-        }
-
-        .scrollmenu a {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 20px 66px;
-            text-decoration: none;
-        }
-
-        .scrollmenu a:hover {
-            background-color: #777;
+            width: 100%;
         }
 
         .footer {
@@ -47,7 +46,7 @@
             margin-bottom: 20px;
             width: 250px;
             height: 600px;
-            background: #777777;
+            background: blanchedalmond;
             border-radius: 16px;
         }
 
@@ -68,7 +67,7 @@
             border-style: solid;
             margin-left: 300px;
             margin-right: 250px;
-            margin-top: -700px;
+            margin-top: -450px;
             width: auto;
             height: auto;
         }
@@ -84,14 +83,33 @@
 <header style="font-size: 36px; font-style: normal">
     <h1 th:align="center">City Bike Rental</h1>
 </header>
-<div class="scrollmenu" style="margin-top: 100px">
-    <a href="http://localhost:8080/usermenu">Strona główna</a>
-    <a href="http://localhost:8080/myaccount">Profil</a>
-    <a href="http://localhost:8080/history">Historia</a>
-    <a href="http://localhost:8080/accountbalance">Stan konta</a>
-    <a href="http://localhost:8080/topupaccount">Doładuj konto</a>
-    <a href="http://localhost:8080/rental">Wypożycz rower</a>
-    <a href="http://localhost:8080/aboutus">O nas</a>
+<div class="menu-contener">
+    <ul id="menu">
+        <li><a href="#">Menu</a>
+            <ul>
+                <li><a href="http://localhost:8080/homepage">Strona główna</a></li>
+                <li><a href="#">Aktualności</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Profil</a>
+            <ul>
+                <li><a href="http://localhost:8080/myaccount">Mój profil</a></li>
+                <li><a href="#">Zmień dane</a></li>
+                <li><a href="#">Historia wypożyczeń</a></li>
+                <li><a href="http://localhost:8080/accountbalance">Stan konta</a></li>
+                <li><a href="http://localhost:8080/topupaccount">Doładuj konto</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Rowery</a>
+            <ul>
+                <li><a href="http://localhost:8080/rental">Wypożycz</a></li>
+                <li><a href="#">Zwróc</a></li>
+                <li><a href="#">Zgłoś problem</a></li>
+            </ul>
+        </li><li><a href="http://localhost:8080/aboutus">O nas</a>
+        </li></li><li><a href="http://localhost:8080/logout">Wyloguj</a>
+        </li>
+    </ul>
 </div>
 <div class="border"></div>
 <div class="border2"></div>
