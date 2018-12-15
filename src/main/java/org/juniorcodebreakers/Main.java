@@ -41,6 +41,7 @@ public class Main implements CommandLineRunner {
         userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         //System.out.println(userRepository.findAll().toString());
 */
+        userRepository.save(new BikeUser("q", passwordEncoder.encode("q"), "administrator@wp.org", Sets.newHashSet()));
     }
 }
 

@@ -7,6 +7,7 @@ import org.juniorcodebreakers.model.user.BikeUser;
 import org.juniorcodebreakers.model.user.BikeUserForm;
 import org.juniorcodebreakers.service.BikeUserApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class UserController {
     private final BikeUserApiClient client;
     private final BikeUserRepository repository;
+    private BikeUser bikeUser;
+    private Role role;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired

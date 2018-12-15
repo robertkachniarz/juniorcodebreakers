@@ -1,6 +1,9 @@
 package org.juniorcodebreakers.login;
 
 import org.juniorcodebreakers.model.user.BikeUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import java.util.Set;
 
