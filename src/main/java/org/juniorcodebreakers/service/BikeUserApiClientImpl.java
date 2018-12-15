@@ -32,4 +32,5 @@ public class BikeUserApiClientImpl implements BikeUserApiClient {
         return new Book(bookId, book.getTitle(), book.getAuthor(), book.getDescription());*/
 
     }
+
 }
