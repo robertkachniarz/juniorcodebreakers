@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head>
+    <title>Spring Security Tutorial</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link th:href="@{../css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+
+        <form th:action="@{/users/register}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Jeśli nie masz konta, przejdź do rejestracji</button>
+</form>
+
+
+
+    <form th:action="@{/users/login}" method="POST" class="form-signin">
+        <h3 class="form-signin-heading" th:text="Witaj"></h3>
+        <br/>
+
+        <input type="text" id="email" name="email" th:placeholder="Email"
+               class="form-control"/> <br/>
+        <input type="password" th:placeholder="Hasło"
+               id="password" name="password" class="form-control"/> <br/>
+
+        <div align="center" th:if="${param.error}">
+            <p style="font-size: 20px; color: #FF1C19;">Niewłaściwy adres email lub hasło.</p>
+        </div>
+        <button class="btn btn-primary block full-width m-b" name="Submit" value="Zaloguj" type="Submit"
+                th:text="Zaloguj"></button>
+    </form>
+</div>
+</section>
+</body>
+</html>

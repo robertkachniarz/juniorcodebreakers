@@ -22,16 +22,15 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="text-holder">
-        <div class="text">
-                <p>ID: <span th:text="${bikeuser.id}">Id</span></p>
-                <p>Tytuł: <span th:text="${bikeuser.login}">Login</span></p>
-                <p>Autor: <span th:text="${bikeuser.e_mail}">Mail</span></p>
+        <div class="container">
+                <p>Imię: <span th:text="${user.getFirstname()}">Imie</span></p>
+                <p>Nazwisko: <span th:text="${user.getLastname()}">Nazwisko</span></p>
+                <p>Email: <span th:text="${user.getEmail()}">Email</span></p>
+                <p>Rola: <span th:text="${role}">Rola</span></p>
         </div>
-    </div>
-<form th:action="@{/users/delete}" th:method="post">
-            <button name="delete" type="submit">Usuń konto</button>
-</form>
-</section>
-</body>
-</html>
+    <!--<form th:action="@{/users/delete}" th:method="post">
+                <button name="delete" type="submit">Usuń konto</button>
+    </form>-->
+    </section>
+    </body>
+    </html>
