@@ -95,8 +95,8 @@ public class UserController {
     @GetMapping("/topupaccount")
     public String topUpAccountPage(){return "users/menuhtml/topupaccount";}
 
-    @GetMapping("/home")
+    @GetMapping("/homepage")
     public String homePage(){
-        return "users/home";
+        return "users/homepage";
     }
 }

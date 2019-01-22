@@ -22,8 +22,10 @@ public class Main implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
+
     }
 
     @Override
@@ -32,13 +34,10 @@ public class Main implements CommandLineRunner {
         Role userRole = roleRepository.save(new Role("USER"));
 
         // guava
-
+        userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         userRepository.save(new BikeUser("administrator", passwordEncoder.encode("administrator"), "administrator@wp.org", Sets.newHashSet(adminRole, userRole)));
         userRepository.save(new BikeUser("uzytkownik", passwordEncoder.encode("uzytkownik"), "uzytkownik@wp.org", Sets.newHashSet(userRole)));
 
-
-
-        userRepository.findByLogin("uzytkownik").ifPresent(System.out::println);
         //System.out.println(userRepository.findAll().toString());
 
        // userRepository.save(new BikeUser("q", passwordEncoder.encode("q"), "administrator@wp.org", Sets.newHashSet()));

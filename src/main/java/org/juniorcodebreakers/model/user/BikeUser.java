@@ -13,8 +13,10 @@ public class BikeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String login;
     private String password;
+    @Column(unique = true)
     private String e_mail;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "bikeusers_roles",
